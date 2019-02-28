@@ -1,0 +1,6 @@
+apidoc -i /home/wwwroot/wxapp.dahengdian.com/application/mobile/logic/ -o /home/wwwroot/wxapp.dahengdian.com/public/apidoc/app/v1/
+/usr/local/lib/node_modules/apidoc/template/
+
+
+
+apidoc -i /home/wwwroot/wxapp.dahengdian.com/application/master/logic/ -o /home/wwwroot/wxapp.dahengdian.com/public/apidoc/master/v1/

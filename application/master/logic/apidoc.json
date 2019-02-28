@@ -1,0 +1,22 @@
+{
+  "name": "p2p 文档",
+  "version": "1.0.0",
+  "description": "适用于后台管理系统",
+  "title": "Custom apiDoc browser title",
+
+  
+  "header": {
+    "title": "写在调用接口之前",
+    "filename": "header.md"
+  },
+  "footer": {
+    "title": "版本控制",
+    "filename": "footer.md"
+  },
+  
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": false,
+  	"jQueryAjaxSetup": true
+  }
+}

@@ -1,0 +1,249 @@
+{eq name="icon" value="1"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>提现成功</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="cashSuc">
+        <div class="item">
+            <div class="cashSuc-item">
+                <div class="left-icon"><img src="/static/notify/fuyou/message/img/icon.png"></div>
+                <div class="right-txt">发起提现申请</div>
+            </div>
+            <div class="line active"></div>
+        </div>
+        <div class="item">
+            <div class="cashSuc-item" style="height: 0.9rem;">
+                <div class="left-icon2"><img src="/static/notify/fuyou/message/img/Clock 2x.png"></div>
+                <div class="right-txt">
+                    <div class="right-txt-top">银行处理中</div>
+                    <div class="right-txt-bottom">预计{$reachTime}前到账</div>
+                </div>
+            </div>
+            <div class="line" style="margin-top:0.05rem;"></div>
+        </div>
+        <div class="cashSuc-item">
+            <div class="left-icon grey"></div>
+            <div class="right-txt">提现成功</div>
+        </div>
+    </div>
+    <div class="cashInfo">
+        <div class="pay-item">
+            <div class="info-left ft30">提现金额</div>
+            <div class="info-right ft28">￥{$money}</div>
+        </div>
+        <div class="pay-item">
+            <div class="info-left ft30">手续费</div>
+            <div class="info-right ft28">￥0.00</div>
+        </div>
+        <div class="pay-item">
+            <div class="info-left ft30">到账银行卡</div>
+            <div class="info-right ft28">{$bankName} 尾号{$bankNumber}</div>
+        </div>
+    </div>
+    {neq name="from" value="1"}
+        <div id="btn" class="btn">完成</div>
+    {/neq}
+</div>
+<script>
+    window.onload=function(){
+
+
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                withdrawal();
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('finishPreAct', '', 0);
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>提现成功</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/width-conversion.js"></script>
+</head>
+<body>
+<div class="content">
+    <div class="cashSuc">
+        <div class="item">
+            <div class="cashSuc-item">
+                <div class="left-icon"></div>
+                <div class="right-txt">发起提现申请</div>
+            </div>
+            <div class="line active"></div>
+        </div>
+        <div class="item">
+            <div class="cashSuc-item" style="height: 0.9rem;">
+                <div class="left-icon2"><img src="/static/notify/fuyou/message/img/Clock 2x.png"></div>
+                <div class="right-txt">
+                    <div class="right-txt-top">银行处理中</div>
+                    <div class="right-txt-bottom">{$reachTime}</div>
+                </div>
+            </div>
+            <div class="line" style="margin-top:0.05rem;"></div>
+        </div>
+        <div class="cashSuc-item">
+            <div class="left-icon grey"></div>
+            <div class="right-txt">申请成功</div>
+        </div>
+    </div>
+    <div class="cashInfo">
+        <div class="cashInfo-detail">
+            <div class="info-left">提现金额</div>
+            <div class="info-right">￥{$money}</div>
+        </div>
+        <div class="cashInfo-detail">
+            <div class="info-left">手续费</div>
+            <div class="info-right">￥0</div>
+        </div>
+        <div class="cashInfo-detail">
+            <div class="info-left">到账银行卡</div>
+            <div class="info-right">{$bankName} 尾号{$bankNumber}</div>
+        </div>
+    </div>
+    <div id="btn" class="btn">完成</div>
+</div>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                withdrawal();
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('finishPreAct', '', 0);
+            }
+        }
+    }
+</script>
+</body>
+</html>
+-->
+{/eq}
+
+{eq name="icon" value="2"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>提现失败</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content-tips">
+        <img src="/static/notify/fuyou/message/img/fail 2x.png">
+    </div>
+    <div class="tip-txt">提现失败</div>
+    {neq name="from" value="1"}
+    <div id="btn" class="btn">完成</div>
+    {/neq}
+</div>
+<script>
+    window.onload=function(){
+
+
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                withdrawal();
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('finishPreAct', '', 0);
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>提现失败</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content-tips">
+        <img src="/static/notify/fuyou/message/img/fail 2x.png">
+    </div>
+    <div class="tip-txt">提现失败</div>
+    <div id="btn" class="btn">完成</div>
+</div>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                withdrawal();
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('finishPreAct', '', 0);
+            }
+        }
+    }
+</script>
+</body>
+</html>-->
+{/eq}

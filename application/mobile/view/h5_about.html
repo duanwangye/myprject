@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{$resourcePath}/css/about.css">
+    <title>关于我们</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="{$resourcePath}/js/adaptive.js"></script>
+    <script type="text/javascript" src="{$resourcePath}/js/jquery.min.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="banner"></div>
+    <div class="content-item">
+        <p>&nbsp;&nbsp;加法金服是由浙江尊珂投资管理有限公司打造的互联网金融服务平台（P2P），致力于以“专业、透明、信用”的理念为投资人打造安全、高效的投资环境，为广大有资金需求的中小微企业、个体商户及个人提供安全可靠的投资服务，实现财富增值。</p>
+    </div>
+    <div class="title">
+        选择我们的
+        <span class="bule">3</span>大理由
+    </div>
+    <div class="content-item">
+        <div class="left fl">
+            <img src="{$resourcePath}/image/zhuan.png">
+        </div>
+        <div class="right fl">
+            <p class="right-title">专业团队</p>
+            <p class="right-txt">加法金服拥有专业的精英管理运营团队，由金融、管理、互联网等领域资深专业人士组成,具备深厚的专业实力优势。</p>
+        </div>
+    </div>
+    <div class="content-item">
+        <div class="left fl">
+            <img src="{$resourcePath}/image/chan.png">
+        </div>
+        <div class="right fl">
+            <p class="right-title">产品灵活</p>
+            <p class="right-txt">加法金服针对理财客户的短期理财需求，开发了可随存随取的活期理财产品，满足投资人各种期限的理财需求。</p>
+        </div>
+    </div>
+    <div class="content-item" style="height: 2.5rem;">
+        <div class="left fl">
+            <img src="{$resourcePath}/image/shi.png">
+        </div>
+        <div class="right fl" style="margin-bottom: 0.3rem;">
+            <p class="right-title">实力托管</p>
+            <p class="right-txt">加法金服凭借丰富的资产管理经验及严谨的风险控制体系，将有优质资产和信用的资金需求方和有短期理财需求的互联网金融理财用户通过平台连接起来。通过第三方实力机构——富友集团托管，为资产提供良好的安全保障，为投资人提供透明、低风险、高收益的理财产品。</p>
+        </div>
+    </div>
+    <div class="lun">
+        <div class="title white fb">
+            选择我们的
+            <span class="bule bu">4</span>大理由
+        </div>
+        <ul class="btn" id="banner">
+            <li style="background-color:#5c70ff;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="lun-box" >
+            <ul>
+                <li style="display:block;">
+                    <img src="{$resourcePath}/image/feng.png">
+                </li>
+                <li><img src="{$resourcePath}/image/xin.png"></li>
+                <li><img src="{$resourcePath}/image/zhi.png"></li>
+                <li><img src="{$resourcePath}/image/jin.png"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $("#banner li").click(function(){
+        $(this).css("backgroundColor","#5c70ff").siblings().css("backgroundColor","#949495")
+        $(".lun-box ul li").hide().eq($("#banner li").index(this)).show();
+    });
+</script>
+</html>

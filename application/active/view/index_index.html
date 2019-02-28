@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css">
+    <title>活动页面</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script>
+        window.onload=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                submit('这是腾讯的一个网站', 'http://www.qq.com', 'http://zhidao.dahengdian.com/static/images/user_litpic.png');
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('showShareButton', '{"show" : "true","imgUrl":"http://zhidao.dahengdian.com/static/images/user_litpic.png","shareUrl":"http://www.qq.com","title":"这是腾讯的一个网站","content":"腾讯是个好网站，你值得观看"}', 0);
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="content">
+    这是一个活动呀，这是一个活动呀，这是一个活动呀，这是一个活动呀，这是一个活动呀
+</div>
+</body>
+</html>

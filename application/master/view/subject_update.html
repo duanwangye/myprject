@@ -1,0 +1,405 @@
+{include file="public/header-begin" /}
+
+<link href="{$Think.config.resources}/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="{$Think.config.resources}/css/plugins/datatimepicker/bootstrap-datetimepicker.css" rel="stylesheet">
+<link href="{$Think.config.resources}/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+{include file="public/header-end" /}
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>产品管理 - 发布标的</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a>标的管理</a>
+            </li>
+            <li class="active">
+                <strong>发布标的</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>基本信息 <small>base information</small></h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="form_basic.html#">Config option 1</a>
+                            </li>
+                            <li><a href="form_basic.html#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-horizontal">
+                        <div class="form-group"><label class="col-sm-2 control-label">标题</label>
+                            <div class="col-sm-3"><input v-model="detail.title" type="text" class="form-control"></div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">类型</label>
+                            <div class="col-sm-10">
+                                {foreach $subjectTypeList as $item}
+                                <div class="radio {$item['subjectTypeID'] == 1 ? 'radio-info' : 'radio-success'} radio-inline margin-radio">
+                                    <input v-model="detail.subjectTypeID" type="radio" id="inlineRadioSubjectType{$item['subjectTypeID']}" v-bind:value="{$item['subjectTypeID']}" name="inlineRadioSubjectType">
+                                    <label for="inlineRadioSubjectType{$item['subjectTypeID']}"> {$item['name']} </label>
+                                </div>
+                                {/foreach}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">起息</label>
+                            <div class="col-sm-10">
+                                {foreach $interestTypeList as $item}
+                                <div class="radio {$item['interestTypeID'] == 1 ? 'radio-info' : 'radio-success'} radio-inline margin-radio">
+                                    <input v-model="detail.interestTypeID" type="radio" id="inlineRadioInterestTypeID{$item['interestTypeID']}" v-bind:value="{$item['interestTypeID']}" name="inlineRadioInterestTypeID">
+                                    <label for="inlineRadioInterestTypeID{$item['interestTypeID']}"> {$item['name']} </label>
+                                </div>
+                                {/foreach}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">起息时间</label>
+                            <div class="col-sm-3">
+                                {foreach $interestTimeTypeList as $item}
+                                <div class="radio {$item['interestTimeTypeID'] == $defaultInterestTimeTypeID ? 'radio-info' : 'radio-success'} radio-inline margin-radio">
+                                    <input v-model="detail.interestTimeTypeID" type="radio" id="inlineRadioInterestTimeType{$item['interestTimeTypeID']}" v-bind:value="{$item['interestTimeTypeID']}" name="inlineRadioInterestTimeTypeID">
+                                    <label for="inlineRadioInterestTimeType{$item['interestTimeTypeID']}"> {$item['name']} </label>
+                                </div>
+                                {/foreach}
+                            </div>
+                            <!--<div class="col-sm-5">
+                                <div class="radio-info radio-inline margin-radio">
+                                    <label style="font-weight: 400;">* T成交日 + 1为次日起息，到期当天算息； T成交日 + 0为购买日起息，到期当天不算息；</label>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">期限</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input v-model="detail.term" type="text" class="form-control">
+                                    <span class="input-group-addon">天</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">到期时间</span>
+                                    <input readonly value="{{overTime}}" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">到账时间</span>
+                                    <input readonly value="{{reachTime}}" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--<template v-if="detail.interestTimeTypeID == 1">
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">认购开始时间</label>
+                            <div class="col-sm-2">
+                                <div class="input-group clockpicker" data-autoclose="true">
+                                    <input v-model="detail.beginTime" id="beginTime" type="text" class="form-control form_datetime">
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">认购结束时间</label>
+                            <div class="col-sm-2">
+                                <div class="input-group clockpicker" data-autoclose="true">
+                                    <input v-model="detail.endTime" id="endTime" type="text" class="form-control form_datetime">
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        </template>-->
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">总金额</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+
+                                    <input v-model="detail.price" type="text" class="form-control">
+                                    <span class="input-group-addon">
+                                       元
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">年化</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+
+                                    <input  v-model="detail.year" type="text" class="form-control">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+                       <!-- <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">标的平台年化</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input  v-model="detail.yearSystem" type="text" class="form-control">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">起投金额</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input v-model="detail.basePrice" type="text" class="form-control">
+                                    <span class="input-group-addon">
+                                        元
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">最大可投金额</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+
+                                    <input v-model="detail.baseMaxPrice" type="text" class="form-control">
+                                    <span class="input-group-addon">
+                                        元
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">金额倍率</label>
+                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        </div>-->
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">使用红包个数</label>
+                            <div class="col-sm-10">
+                                {foreach [0,1,2,3,4,5,6] as $item}
+                                <div class="radio radio-danger radio-inline margin-radio">
+                                    <input v-model="detail.hongbao" type="radio" id="hongbao{$item}" v-bind:value="{$item}" name="hongbao" >
+                                    <label for="hongbao{$item}"> {$item} </label>
+                                </div>
+                                {/foreach}
+                            </div>
+                        </div>
+
+                        <!--<div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">还款时间</label>
+                            <div class="col-sm-2">
+                                <div class="input-group clockpicker" data-autoclose="true">
+                                    <input readonly v-model="detail.repayTime" type="text" class="form-control form_datetime" @click="bindRepayTime">
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--<div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">认购开始时间</label>
+                            <div class="col-sm-10">
+                                <div class="input-daterange input-group" id="datepicker">
+                                    <input v-model="detail.Time" type="text" class="form-control" name="start"/>
+                                    <span class="input-group-addon">to</span>
+                                    <input v-model="detail.endTime" type="text" class="form-control" name="end" />
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--<div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">还款时间</label>
+                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        </div>-->
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <div class="checkbox checkbox-success checkbox-inline">
+                                    <input v-model="detail.isIndexApp" type="checkbox" id="inlineCheckbox1">
+                                    <label for="inlineCheckbox1"> 推荐app </label>
+                                </div>
+                                <div class="checkbox checkbox-success checkbox-inline">
+                                    <input v-model="detail.isIndexPc" type="checkbox" id="inlineCheckbox2">
+                                    <label for="inlineCheckbox2"> 推荐pc </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-white" type="button">取消</button>
+                                <button id="saveButton" class="ladda-button ladda-button-demo btn btn-primary" type="button" data-style="expand-left" @click="bindGetDetail">全部保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{include file="public/footer-begin" /}
+<script src="{$Think.config.resources}/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="{$Think.config.resources}/js/plugins/datapicker/bootstrap-datepicker.zh-CN.min.js"></script>
+
+
+<script src="{$Think.config.resources}/js/plugins/datatimepicker/bootstrap-datetimepicker.js"></script>
+<script src="{$Think.config.resources}/js/plugins/datatimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    var loadButton;
+</script>
+<script>
+    let overtimeIsinterest = {$overtimeIsinterest};
+    var app = new Vue({
+        el: '#page-wrapper',
+        data: {
+            detail: {
+                subjectID:{$subjectID ? $subjectID : 0},
+                beginTime:formatDate(Date.parse(new Date())/ 1000,'Y-M-D H:I'),
+                endTime:formatDate(Date.parse(new Date())/ 1000 + 3 * 86400,'Y-M-D H:I'),
+                subjectTypeID:1,
+                interestTypeID:1,
+                interestTimeTypeID:{$defaultInterestTimeTypeID},
+                hongbao:0,
+                isIndexPc:1,
+                isIndexApp:1,
+                repayTime:'',
+            }
+        },
+        computed: {
+            // 计算属性的 getter
+            reachTime: function () {
+                if(!parseInt(this.detail.term)) {
+                    return;
+                }
+                var timestamp = parseInt(Date.parse( new Date()) / 1000);
+                timestamp = timestamp + 86400 * this.detail.term + 86400;
+                /*if(overtimeIsinterest == 1) {
+                    timestamp = timestamp - 86400;
+                }
+                if(this.detail.interestTimeTypeID == 2) {
+                    timestamp = timestamp + 86400;
+                }*/
+                return formatDate(timestamp,  'Y-M-D');
+            },
+            overTime:function () {
+                if(!parseInt(this.detail.term)) {
+                    return;
+                }
+                var timestamp = parseInt(Date.parse( new Date()) / 1000);
+                timestamp = timestamp + 86400 * this.detail.term;
+                /*if(overtimeIsinterest == 1) {
+                    timestamp = timestamp - 86400;
+                }
+                if(this.detail.interestTimeTypeID == 2) {
+                    timestamp = timestamp + 86400;
+                }*/
+                return formatDate(timestamp, 'Y-M-D');
+            }
+        },
+        methods:{
+            bindGetDetail:function () {
+
+                //loadButton.ladda('start');
+                this.getDetail();
+            },
+            bindRepayTime:function () {
+                if(!parseInt(this.detail.term)) {
+                    swal({
+                        title: "提示",
+                        text: "期限必须为大于0的数字"
+                    });
+                    return;
+                }
+                this.detail.repayTime = formatDate(datatotime(this.detail.beginTime) + this.detail.term * 86400, 'Y-M-D H:I');
+            },
+            getDetail:function (callback) {
+                var that = this;
+                that.detail.overTime = this.overTime;
+                that.detail.reachTime = this.reachTime;
+                request({
+                    path:'subject/API_create',
+                    data:that.detail,
+                    show:true,
+                    success:function (data) {
+                        if(callback) {
+                            callback(data);
+                        }
+                    }
+                })
+            }
+        },
+        created:function () {
+            console.log(this.detail.subjectID);
+            if (this.detail.subjectID > 0) {
+
+            }
+            /*$(document).ready(function() {
+                /!*$('#data_5 .input-daterange').datetimepicker({
+                    autoclose: true,
+                    language: "zh-CN",
+                    todayBtn: "linked"
+                });*!/
+
+                $(".datatimepicker").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+            });*/
+
+            $(document).ready(function() {
+                /*$('#data_5 .input-daterange').datetimepicker({
+                 autoclose: true,
+                 language: "zh-CN",
+                 todayBtn: "linked"
+                 });*/
+
+                $("#beginTime").datetimepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd hh:ii',
+                    todayBtn: true,
+                    language: "zh-CN"
+                });
+
+                $("#endTime").datetimepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd hh:ii',
+                    todayBtn: true,
+                    language: "zh-CN"
+                });
+                Ladda.bind( '#saveButton', { timeout: 1000 } );
+            });
+        }
+    })
+
+</script>
+{include file="public/footer-end" /}

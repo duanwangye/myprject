@@ -1,0 +1,102 @@
+{eq name="icon" value="1"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>销户成功</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content-tips">
+        <img src="/static/notify/fuyou/message/img/Correct 2x.png">
+    </div>
+    <div class="tip-txt tip-pay">销户成功</div>
+    {neq name="from" value="1"}
+    <div id="btn" class="btn">完成</div>
+    {/neq}
+
+</div>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                withdrawal();
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('finishPreAct', '', 0);
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+{/eq}
+
+{eq name="icon" value="2"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>销户失败</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content-tips">
+        <img src="/static/notify/fuyou/message/img/fail 2x.png">
+    </div>
+    <div class="tip-txt tip-pay">销户失败</div>
+    <div class="tip-txt tip-pay" style="font-size: 14px">{$msg}</div>
+    {neq name="from" value="1"}
+    <div id="btn" class="btn">完成</div>
+    {/neq}
+</div>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var u=window.navigator.userAgent;
+            if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                withdrawal();
+            }
+            if(u.indexOf('Android')>-1){
+                window.bj.call('finishPreAct', '', 0);
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+{/eq}

@@ -1,0 +1,559 @@
+{include file="public/header-begin" /}
+
+
+<!-- Toastr style -->
+<link href="{$Think.config.resources}/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+<!-- Gritter -->
+<link href="{$Think.config.resources}/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+
+{include file="public/header-end" /}
+
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">环比上升</span>
+                    <h5>累计投资额</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="margin-rmb">￥40 886200</h1>
+                    <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                    <small>Android 40,886&nbsp;&nbsp;&nbsp;&nbsp;IOS 40,886&nbsp;&nbsp;&nbsp;&nbsp;PC 1,232</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info pull-right">环比下降</span>
+                    <h5>今日投资额</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="margin-rmb">￥234,000</h1>
+                    <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                    <small>Android 40,886&nbsp;&nbsp;&nbsp;&nbsp;IOS 40,886&nbsp;&nbsp;&nbsp;&nbsp;PC 1,232</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">火爆</span>
+                    <h5>累计订单数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="">106</h1>
+                    <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                    <small>Android 40,886&nbsp;&nbsp;&nbsp;&nbsp;IOS 40,886&nbsp;&nbsp;&nbsp;&nbsp;PC 1,232</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-danger pull-right">危险</span>
+                    <h5>累计用户</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="">245</h1>
+                    <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
+                    <small>Android 40,886&nbsp;&nbsp;&nbsp;&nbsp;IOS 40,886&nbsp;&nbsp;&nbsp;&nbsp;PC 1,232</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>订单统计</h5>
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-xs btn-white active">周</button>
+                            <button type="button" class="btn btn-xs btn-white">月</button>
+                            <button type="button" class="btn btn-xs btn-white">季</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-dashboard-chart"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <ul class="stat-list">
+                                <li>
+                                    <h2 class="no-margins">2,346</h2>
+                                    <small>Total orders in period</small>
+                                    <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 48%;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h2 class="no-margins ">4,422</h2>
+                                    <small>Orders in last month</small>
+                                    <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 60%;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h2 class="no-margins ">9,180</h2>
+                                    <small>Monthly income from orders</small>
+                                    <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 22%;" class="progress-bar"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>最新购买记录</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="dashboard_4.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="dashboard_4.html#">Config option 1</a>
+                            </li>
+                            <li><a href="dashboard_4.html#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-9 m-b-xs">
+                            <div data-toggle="buttons" class="btn-group">
+                                <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> 全部 </label>
+                                <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> 失败 </label>
+                                <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> 成功 </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                           <!-- <div class="input-group">&lt;!&ndash;<input type="text" placeholder="Search"
+                                                            class="input-sm form-control">&ndash;&gt; <span
+                                    class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" style="float: right"> 刷新 </button> </span>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+
+                                <th>交易时间</th>
+                                <th>用户 </th>
+                                <th>产品 </th>
+                                <th>比例</th>
+                                <th>金额 </th>
+                                <th>状态 </th>
+                                <th>使用红包情况 </th>
+                                <th>订单编号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>2018-03-21 00:00:00</td>
+                                <td>刘晓明</td>
+                                <td>新手标11100-1期</td>
+                                <td><span class="pie">0.52/1.561</span></td>
+                                <td>￥8000.00</td>
+                                <td>支付成功</td>
+                                <td>使用红包  0.00  元</td>
+                                <td>76152982374723231123313</td>
+                            </tr>
+                            <tr>
+                                <td>2014-12-21 00:00:00</td>
+                                <td>姜春花</td>
+                                <td>新手标11100-1期</td>
+                                <td><span class="pie">8000.00/100000.00</span></td>
+                                <td>￥12000.00</td>
+                                <td>支付成功</td>
+                                <td>使用红包  0.00  元</td>
+
+                                <td>12312381273198212312373</td>
+                            </tr>
+                            <tr>
+                                <td>2018-03-21 00:00:00</td>
+                                <td>刘晓明</td>
+                                <td>新手标11100-1期</td>
+                                <td><span class="pie">0.52/1.561</span></td>
+                                <td>￥8000.00</td>
+                                <td><span class="badge badge-danger">支付失败</span></td>
+                                <td>使用红包  0.00  元</td>
+                                <td>76152982374723231123313</td>
+                            </tr>
+                            <tr>
+                                <td>2014-12-21 00:00:00</td>
+                                <td>姜春花</td>
+                                <td>新手标11100-1期</td>
+                                <td><span class="pie">8000.00/100000.00</span></td>
+                                <td>￥12000.00</td>
+                                <td>支付成功</td>
+                                <td>使用红包  0.00  元</td>
+
+                                <td>12312381273198212312373</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>最新充值记录</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-9 m-b-xs">
+                                    <div data-toggle="buttons" class="btn-group">
+                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> 全部 </label>
+                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> 失败 </label>
+                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> 成功 </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <!-- <div class="input-group">&lt;!&ndash;<input type="text" placeholder="Search"
+                                                                     class="input-sm form-control">&ndash;&gt; <span
+                                             class="input-group-btn">
+                                                 <button type="button" class="btn btn-sm btn-primary" style="float: right"> 刷新 </button> </span>
+                                     </div>-->
+                                </div>
+                            </div>
+                            <table class="table table-hover no-margins">
+                                <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>姓名</th>
+                                    <th>金额</th>
+                                    <th>状态</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>09-09 22:22:33</small></td>
+                                    <td>小明明</td>
+                                    <td>￥192.00</td>
+                                    <td>成功</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>10-09 01:23:45</small></td>
+                                    <td>来图了</td>
+                                    <td>￥192.00</td>
+                                    <td>成功</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>09-09 22:22:33</small></td>
+                                    <td>风云</td>
+                                    <td>￥192.00</td>
+                                    <td>成功</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>09-09 22:22:33</small></td>
+                                    <td>张大胆</td>
+                                    <td>￥192.00</td>
+                                    <td>成功</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>09-09 22:22:33</small></td>
+                                    <td>张大胆</td>
+                                    <td>￥192.00</td>
+                                    <td>成功</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>09-09 22:22:33</small></td>
+                                    <td>张大胆</td>
+                                    <td>￥192.00</td>
+                                    <td><span class="badge badge-danger">失败</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-clock-o"></i> <small>09-09 22:22:33</small></td>
+                                    <td>张大胆</td>
+                                    <td>￥192.00</td>
+                                    <td>成功</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>最新提现记录</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-9 m-b-xs">
+                                    <div data-toggle="buttons" class="btn-group">
+                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> 全部 </label>
+                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> 失败 </label>
+                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> 成功 </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <!-- <div class="input-group">&lt;!&ndash;<input type="text" placeholder="Search"
+                                                                     class="input-sm form-control">&ndash;&gt; <span
+                                             class="input-group-btn">
+                                                 <button type="button" class="btn btn-sm btn-primary" style="float: right"> 刷新 </button> </span>
+                                     </div>-->
+                                </div>
+                            </div>
+                            <table class="table table-hover no-margins">
+                                <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><small>Pending...</small></td>
+                                    <td><i class="fa fa-clock-o"></i> 11:20pm</td>
+                                    <td>Samantha</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 24% </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label label-warning">Canceled</span> </td>
+                                    <td><i class="fa fa-clock-o"></i> 10:40am</td>
+                                    <td>Monica</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
+                                </tr>
+                                <tr>
+                                    <td><small>Pending...</small> </td>
+                                    <td><i class="fa fa-clock-o"></i> 01:30pm</td>
+                                    <td>John</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 54% </td>
+                                </tr>
+                                <tr>
+                                    <td><small>Pending...</small> </td>
+                                    <td><i class="fa fa-clock-o"></i> 02:20pm</td>
+                                    <td>Agnes</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 12% </td>
+                                </tr>
+                                <tr>
+                                    <td><small>Pending...</small> </td>
+                                    <td><i class="fa fa-clock-o"></i> 09:40pm</td>
+                                    <td>Janet</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 22% </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label label-primary">Completed</span> </td>
+                                    <td><i class="fa fa-clock-o"></i> 04:10am</td>
+                                    <td>Amelia</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
+                                </tr>
+                                <tr>
+                                    <td><small>Pending...</small> </td>
+                                    <td><i class="fa fa-clock-o"></i> 12:08am</td>
+                                    <td>Damian</td>
+                                    <td class="text-navy"> <i class="fa fa-level-up"></i> 23% </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+{include file="public/footer-begin" /}
+<!-- Flot -->
+<script src="{$Think.config.resources}/js/plugins/flot/jquery.flot.js"></script>
+<script src="{$Think.config.resources}/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="{$Think.config.resources}/js/plugins/flot/jquery.flot.spline.js"></script>
+<script src="{$Think.config.resources}/js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="{$Think.config.resources}/js/plugins/flot/jquery.flot.pie.js"></script>
+
+<!-- Peity -->
+<script src="{$Think.config.resources}/js/plugins/peity/jquery.peity.min.js"></script>
+<script src="{$Think.config.resources}/js/demo/peity-demo.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="{$Think.config.resources}/js/inspinia.js"></script>
+<script src="{$Think.config.resources}/js/plugins/pace/pace.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="{$Think.config.resources}/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- GITTER -->
+<script src="{$Think.config.resources}js/plugins/gritter/jquery.gritter.min.js"></script>
+
+<!-- Sparkline -->
+<script src="{$Think.config.resources}/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+<!-- Sparkline demo data  -->
+<script src="{$Think.config.resources}/js/demo/sparkline-demo.js"></script>
+
+<!-- ChartJS-->
+<script src="{$Think.config.resources}/js/plugins/chartJs/Chart.min.js"></script>
+
+<!-- Toastr -->
+<script src="{$Think.config.resources}/js/plugins/toastr/toastr.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 4000
+            };
+            toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+
+        }, 1300);
+
+
+        var data1 = [
+            [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]
+        ];
+        var data2 = [
+            [0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0],[13,2],[14,8],[15,0],[16,0]
+        ];
+        $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
+                data1, data2
+            ],
+            {
+                series: {
+                    lines: {
+                        show: false,
+                        fill: true
+                    },
+                    splines: {
+                        show: true,
+                        tension: 0.4,
+                        lineWidth: 1,
+                        fill: 0.4
+                    },
+                    points: {
+                        radius: 0,
+                        show: true
+                    },
+                    shadowSize: 2
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true,
+                    tickColor: "#f0f0f0",
+                    borderWidth: 1,
+                    color: '#f0f0f0'
+                },
+                colors: ["#1ab394", "#1C84C6"],
+                xaxis:{
+                },
+                yaxis: {
+                    ticks: 4
+                },
+                tooltip: false
+            }
+        );
+
+        var doughnutData = {
+            labels: ["App","Software","Laptop" ],
+            datasets: [{
+                data: [300,50,100],
+                backgroundColor: ["#a3e1d4","#dedede","#9CC3DA"]
+            }]
+        } ;
+
+
+        var doughnutOptions = {
+            responsive: false,
+            legend: {
+                display: false
+            }
+        };
+
+
+        var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+        new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
+
+        var doughnutData = {
+            labels: ["App","Software","Laptop" ],
+            datasets: [{
+                data: [70,27,85],
+                backgroundColor: ["#a3e1d4","#dedede","#9CC3DA"]
+            }]
+        } ;
+
+
+        var doughnutOptions = {
+            responsive: false,
+            legend: {
+                display: false
+            }
+        };
+
+
+        var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
+        new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
+
+    });
+</script>
+{include file="public/footer-end" /}

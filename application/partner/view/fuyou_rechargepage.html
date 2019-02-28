@@ -1,0 +1,71 @@
+{eq name="icon" value="1"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>充值成功</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content-tips">
+        <img src="/static/notify/fuyou/message/img/Correct 2x.png">
+    </div>
+    <div class="tip-txt tip-pay">充值成功</div>
+    <div class="pay-info">
+        <div class="pay-info-detail">
+            <div class="pay-left">银行卡</div>
+            <div class="pay-right">{$bankName} 尾号{$bankNumber}</div>
+        </div>
+        <div class="pay-info-detail">
+            <div class="pay-left">充值金额</div>
+            <div class="pay-right">￥{$money}</div>
+        </div>
+    </div>
+    <div class="btn" onClick="window.bj.finishPreAct()">完成</div>
+</div>
+</body>
+</html>
+{/eq}
+
+{eq name="icon" value="2"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/notify/fuyou/message/css/style.css">
+    <title>充值失败</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/static/notify/fuyou/message/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+
+
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content-tips">
+        <img src="/static/notify/fuyou/message/img/fail 2x.png">
+    </div>
+    <div class="tip-txt">充值失败</div>
+    <div class="btn" onClick="window.bj.finishPreAct()">完成</div>
+</div>
+</body>
+</html>
+{/eq}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{$resourcePath}/css/activity.css?v=4">
+    <title>活动中心</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="{$resourcePath}/js/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 18;
+        window['adaptive'].maxWidth = 480;
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+<div class="content"><ul>
+    {volist name="activeList" id="vo"}
+    <div class="bk"></div>
+
+    <li class="content-item"  data-url="bj://h5url?url={$vo['linkApp']}?params=1" data-uios="{$vo['linkApp']}?params=1" data-title="{$vo['title']}" data-img="https://wxapp.dahengdian.com/mTQD8RLMI5.png" data-desc="{$vo['title']}">
+        <div class="top">
+            <p class="fb fl">{$vo['title']}</p>
+            <!--<img src="{$resourcePath}/image/icon1.png" class="fl ml">
+            <img src="{$resourcePath}/image/icon1.png" class="fl ml">-->
+        </div>
+        <div class="time">{$vo['note']}</div>
+        <div class="bottom">
+            <img src="{$vo['thumbApp']}">
+            <!--<p class="time bottom-txt">注册即可获得<span class="red f24">888</span>元红包</p>-->
+            <div class="item-pro">进行中</div>
+        </div>
+    </li>
+
+    {/volist}
+    <!--<div class="content-item">
+        <div class="top">
+            <p class="fb fl"><span class="red">新手</span>专享活动</p>
+            <img src="{$resourcePath}/image/icon1.png" class="fl ml">
+            <img src="{$resourcePath}/image/icon1.png" class="fl ml">
+        </div>
+        <div class="time">注册即可获得<span class="red f24">888</span>元红包</div>
+        <div class="bottom">
+            <img src="{$resourcePath}/image/activity.png">
+            &lt;!&ndash;<p class="time bottom-txt">注册即可获得<span class="red f24">888</span>元红包</p>
+            <div class="item-pro">进行中</div>&ndash;&gt;
+        </div>
+    </div>-->
+</ul>
+</div>
+<script>
+    window.onload=function(){
+        var u=window.navigator.userAgent;
+        var btn=document.getElementsByTagName('li');
+        var aUrl="",
+            aTitle="",
+            aImg="",
+            aDesc="";
+        for(var i=0;i<btn.length;i++){
+            btn[i].index=i;
+            btn[i].onclick=function(){
+                if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                    aUrl=btn[this.index].getAttribute('data-uios');
+                    aTitle=btn[this.index].getAttribute('data-title');
+                    aImg=btn[this.index].getAttribute('data-img');
+                    aDesc=btn[this.index].getAttribute('data-desc');
+                    submit(aTitle,aUrl,aImg,aDesc);
+                }
+                if(u.indexOf('Android')>-1){
+                    aUrl=btn[this.index].getAttribute('data-url');
+                    //window.bj.call('showShareButton', '{"show" : "true","imgUrl":"http://zhidao.dahengdian.com/static/images/user_litpic.png","shareUrl":"http://www.qq.com","title":"这是腾讯的一个网站","content":"腾讯是个好网站，你值得观看"}', 0);
+                }
+                window.location.href=aUrl;
+            }
+        }
+
+    }
+    function jump(url) {
+        //bj://h5url?url=https://www.baidu.com&params=1
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>活动中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="{$resourcePath}/css/reset.css" rel="stylesheet">
+    <link href="{$resourcePath}/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="{$resourcePath}/js/width-conversion.js"></script>
+    <script type="text/javascript" src="{$resourcePath}/js/zepto.min.js"></script>
+    <script type="text/javascript" src="{$resourcePath}/js/touch.js"></script>
+</head>
+<body>
+<div id="active">
+    <ul>
+        {volist name="activeList" id="vo"}
+        <li data-url="bj://h5url?url={$vo['linkApp']}?params=1" data-uios="{$vo['linkApp']}?params=1" data-title="{$vo['title']}" data-img="https://wxapp.dahengdian.com/mTQD8RLMI5.png" data-desc="{$vo['title']}">
+            <div class="pic">
+                &lt;!&ndash;<img src="http://slb.dahengdian.com/jiaqiancaifu/2018/01/11/duddeijKYT.png" alt="">&ndash;&gt;
+                <img src="{$vo['thumbApp']}" alt="">
+               &lt;!&ndash; <img src="{$vo['thumbApp']}" alt="">&ndash;&gt;&lt;!&ndash; <img src="{$resourcePath}/images/active.png" alt="">&ndash;&gt;
+            </div>
+            <div class="info">
+                <div class="left">
+                    <div class="name">{$vo['title']}</div>
+                    <div class="date">{$vo['addTime']}</div>
+                </div>
+                <a href="javascript:;" class="right">查看详情</a>
+            </div>
+        </li>
+        {/volist}
+    </ul>
+</div>
+<script>
+    window.onload=function(){
+        var u=window.navigator.userAgent;
+        var btn=document.getElementsByTagName('li');
+        var aUrl="",
+            aTitle="",
+            aImg="",
+            aDesc="";
+            for(var i=0;i<btn.length;i++){
+                btn[i].index=i;
+                btn[i].onclick=function(){
+                    if(u.indexOf('iPhone')>-1||u.indexOf('iPad')>-1){
+                        aUrl=btn[this.index].getAttribute('data-uios');
+                        aTitle=btn[this.index].getAttribute('data-title');
+                        aImg=btn[this.index].getAttribute('data-img');
+                        aDesc=btn[this.index].getAttribute('data-desc');
+                        submit(aTitle,aUrl,aImg,aDesc);
+                    }
+                    if(u.indexOf('Android')>-1){
+                        aUrl=btn[this.index].getAttribute('data-url');
+                        //window.bj.call('showShareButton', '{"show" : "true","imgUrl":"http://zhidao.dahengdian.com/static/images/user_litpic.png","shareUrl":"http://www.qq.com","title":"这是腾讯的一个网站","content":"腾讯是个好网站，你值得观看"}', 0);
+                    }
+                    window.location.href=aUrl;
+                }
+            }
+
+    }
+    function jump(url) {
+        //bj://h5url?url=https://www.baidu.com&params=1
+
+    }
+</script>
+</body>
+</html>-->

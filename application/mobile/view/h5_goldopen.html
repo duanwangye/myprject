@@ -1,0 +1,40 @@
+<script type="text/javascript" src="{:C('STATIC_ROOT')}/js/jquery.min.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<body>
+<div style="display:none">
+    {$html}
+</div>
+<!-- <form action="" method="post">
+    certif_id<input type='text' name='certif_id' id='certif_id' value=''/>    <br/>
+    <input type='button'  id='abc' value='submit' />
+</form>
+</div>
+<div id="dd" style="display:none"></div> -->
+</body>
+<script type="text/javascript">
+    $(function(){
+        $("#tijiao").trigger("click");
+        /*alert($("#tijiao").val());
+         alert(123);*/
+        return false;
+    });
+
+    /* $("#abc").click(function(){
+     var certif_id = $("#certif_id").val();
+     $.ajax({
+     type:"GET",
+     url:"{:U('Fuyougold/do_gold_app_webreg')}",
+     data:{certif_id:certif_id},
+     dataType: "json",
+     success:function(ss){
+
+     $("#dd").append(ss);
+
+     $("#tijiao").trigger("click");
+
+     }
+     });
+     return false;
+     });
+     $("#abc").trigger("click");*/
+</script>

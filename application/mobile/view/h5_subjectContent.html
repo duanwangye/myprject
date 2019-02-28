@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>详情</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="{$resourcePath}/css/reset.css" rel="stylesheet">
+    <link href="{$resourcePath}/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="{$resourcePath}/js/width-conversion.js"></script>
+    <script type="text/javascript" src="{$resourcePath}/js/zepto.min.js"></script>
+    <script type="text/javascript" src="{$resourcePath}/js/touch.js"></script>
+</head>
+<div id="container">
+    <div class="tabs">
+        <div class="tab active"><span>产品说明</span></div>
+        <div class="tab"><span>项目详情</span></div>
+        <div class="tab"><span>投标记录</span></div>
+    </div>
+    <div class="main">
+        <div class="tab-item active">
+            <div class="desc">
+                <div class="box">
+                    <div class="title">产品说明</div>
+                    <div class="text">本项目为浙江博佳投资管理有限公司推出的一款短期投资理财产品,方便用户短期投资,已注册用户均可投资参与此产品,未满额度不限投资次数.</div>
+                </div>
+            </div>
+            <!--<div class="part border-bottom">
+                <div class="title">购买方式</div>
+                <div class="text">产品投资期间，不可提前赎回</div>
+            </div>-->
+            <div class="part border-bottom">
+                <div class="title">还款方式</div>
+                <div class="text">一次性还付本息</div>
+            </div>
+            <div class="part border-bottom">
+                <div class="title">转让条件</div>
+                <div class="text">不可转让</div>
+            </div>
+        </div>
+        <div class="tab-item">
+            <!--<div class="desc">
+                <div class="box">
+                    <div class="title">项目详情</div>
+                    <div class="text">产品投资期间，不可提前赎回</div>
+                </div>
+            </div>-->
+
+            <!--<div class="part border-bottom">
+                <div class="title">项目介绍</div>
+                <div class="text">
+                    <p>产品投资期间，不可提前赎回</p>
+                   &lt;!&ndash; <img src="{$resourcePath}/img/card.png" alt="">&ndash;&gt;
+                </div>
+            </div>-->
+            <div class="part border-bottom">
+                <div class="title">项目详情</div>
+                <div class="text">
+                    <p>{$loan['info']}</p>
+                </div>
+            </div>
+            <div class="part border-bottom">
+                <div class="title">资料</div>
+                <div class="text">
+                    <p><img src="{$loan['imageUrl']}" style="width: 100%"></p>
+                </div>
+            </div>
+            <div class="part border-bottom">
+                <div class="title">合同</div>
+                <div class="text">
+                    <p><img src="{$loan['contractImageUrl']}" style="width: 100%"></p>
+                </div>
+            </div>
+        </div>
+        <div class="tab-item">
+
+            <div class="desc">
+                <div class="box">
+                    <div class="title">投标记录</div>
+                    <div class="text">
+                        {empty name="cangList"}
+                        暂无投资记录
+                        {else /}
+                        <table>
+                            <tr>
+                                <th>购买金额</th>
+                                <th>客户</th>
+                                <th>购买时间</th>
+                            </tr>
+                            {volist name="cangList" id="vo"}
+                            <tr>
+                                <td>{$vo['moneySubject']}</td>
+                                <td>{:mobileAsterisk($vo['user']['mobile'])}</td>
+                                <td>{$vo['addTime']}</td>
+                            </tr>
+                            {/volist}
+                        </table>
+                        {/empty}
+                    </div>
+                </div>
+            </div>
+            <!--<table>
+                <tr>
+                    <th>购买金额</th>
+                    <th>客户</th>
+                    <th>购买时间</th>
+                </tr>
+                <tr>
+                    <td>20,999.00</td>
+                    <td>159****2479</td>
+                    <td>2017-12-26 12:12:00</td>
+                </tr>
+                <tr>
+                    <td>20,999.00</td>
+                    <td>159****2479</td>
+                    <td>2017-12-26 12:12:00</td>
+                </tr>
+                <tr>
+                    <td>20,999.00</td>
+                    <td>159****2479</td>
+                    <td>2017-12-26 12:12:00</td>
+                </tr>
+                <tr>
+                    <td>20,999.00</td>
+                    <td>159****2479</td>
+                    <td>2017-12-26 12:12:00</td>
+                </tr>
+                <tr>
+                    <td>20,999.00</td>
+                    <td>159****2479</td>
+                    <td>2017-12-26 12:12:00</td>
+                </tr>
+            </table>-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function GetParams(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null) return unescape(r[2]);
+        return "";
+    }
+    $(function(){
+        var tabBtn=$("#container .tabs .tab");
+        var tabItem=$(".main .tab-item");
+        var index=0;
+        function tabFun(index){
+            tabBtn.eq(index).addClass("active").siblings().removeClass("active");
+            tabItem.eq(index).addClass("active").siblings().removeClass("active");
+        }
+        if(GetParams("tab")){
+            index=GetParams("tab")-1;
+            tabFun(index);
+        }
+        tabBtn.on("tap",function(){
+            index=$(this).index();
+            tabFun(index);
+        })
+    })
+</script>
+</body>
+</html>

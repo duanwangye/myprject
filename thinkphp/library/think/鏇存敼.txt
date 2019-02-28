@@ -1,0 +1,53 @@
+
+/********** 2017年12月01日 ***********/
+原因：修改关联别名总是转化为下划线bug为了防止系统cli生成有权限的日志目录
+位置：\thinkphp\library\think\log\driver\File.php
+
+
+
+
+
+/********** 2017年8月4日 14点48分 ***********/
+原因：修改关联别名总是转化为下划线bug
+位置：thinkphp\library\think\model\relation\HasOne.php
+修改：
+
+1、原来
+   注释一行：$result->setRelation(Loader::parseName($relation), $relationModel);
+   新增一行：现在$result->setRelation($relation, $relationModel);
+
+2、注释一行：$attr = Loader::parseName($relation);
+   新增一行：$attr = $relation;
+
+/********** end ***********/
+
+
+/********** 2017年8月20日 17点55分 ***********/
+原因：修改关联别名总是转化为下划线bug
+位置：thinkphp\library\think\model\relation\HasMany.php
+修改：
+
+1、原来
+   注释一行：$result->setRelation(Loader::parseName($relation), $this->resultSetBuild($data[$result->$localKey]));
+   新增一行：现在$result->setRelation($relation, $this->resultSetBuild($data[$result->$localKey]));
+
+2、注释一行：$attr = Loader::parseName($relation);
+   新增一行：$attr = $relation;
+
+/********** end ***********/
+
+
+
+/********** 2017年12月01日 17点55分 ***********/
+原因：修改关联别名总是转化为下划线bug
+位置：thinkphp\library\think\model\relation\BelongsTo.php
+修改：
+
+1、原来
+   注释一行：$result->setRelation(Loader::parseName($relation), $this->resultSetBuild($data[$result->$localKey]));
+   新增一行：现在$result->setRelation($relation, $this->resultSetBuild($data[$result->$localKey]));
+
+2、注释一行：$attr = Loader::parseName($relation);
+   新增一行：$attr = $relation;
+
+/********** end ***********/

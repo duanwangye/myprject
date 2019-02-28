@@ -1,0 +1,316 @@
+{include file="public/header-begin" /}
+
+<link href="{$Think.config.resources}/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="{$Think.config.resources}/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+{include file="public/header-end" /}
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>产品管理 - 产品列表</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">共发布产品 163 个，在线 7 个</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content m-b-sm border-bottom">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label m-b-sm m-t-sm">标的新增起始时间</label>
+                    <div class="input-daterange input-group" id="datepickerCreate">
+                        <input v-model="search.addTimeFrom" type="text" class="form-control"/>
+                        <span class="input-group-addon">to</span>
+                        <input v-model="search.addTimeTo" type="text" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label m-b-sm m-t-sm">还款起始时间</label>
+                    <div class="input-daterange input-group" id="datepickerRepay">
+                        <input v-model="search.repayTimeFrom" type="text" class="form-control"/>
+                        <span class="input-group-addon">to</span>
+                        <input v-model="search.repayTimeTo" type="text" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="control-label m-b-sm m-t-sm">标的类型</label>
+                    <select class="form-control m-b"  v-model="search.subjectTypeID">
+                        <option value="0" selected>不限制</option>
+                        {foreach $subjectTypeList as $item}
+                        <option value="{$item['subjectTypeID']}">{$item['name']}</option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="control-label m-b-sm m-t-sm">状态</label>
+                    <select class="form-control m-b"  v-model="search.status">
+                        <option value="0" selected>不限制</option>
+                        {foreach name="statusList" item="vo" key="k" }
+                        <option value="{$k}">{$vo}</option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="control-label m-b-sm m-t-sm">操作</label>
+                    <br>
+                    <button type="button" class="btn btn-default">清空</button>
+                    <button type="button" class="btn btn-primary">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+
+                    <table class="table table-hover table-vlign">
+                        <thead>
+                        <tr>
+                            <th>标的编号</th>
+                            <th>标的描述</th>
+                            <th>年化</th>
+                            <!--<th>平台年化</th>-->
+                            <th>创建日期</th>
+                            <!--<th>认购结束</th>-->
+                            <th>到期日期 -> 还款日期 -> 到账日期</th>
+
+                            <th>募集金额/总金额</th>
+                            <th>%</th>
+                            <th>APP/PC</th>
+                            <th>状态</th>
+                            <th class="text-right">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(index,item) in list">
+
+                            <td>
+                                {{item.alias}}
+                            </td>
+                            <td>
+                                {{item.title}} / {{item.subjectType.name}} / {{item.interestType.name}}<!-- / {{item.interestTimeType.name}}-->
+
+                            </td>
+                            <td>
+                                {{item.year}}
+                            </td>
+                            <!--<td>
+                                {{item.yearSystem}}
+                            </td>-->
+                            <td>
+                                {{item.addTime}}
+                            </td>
+                            <!--<td>
+                                {{item.endTime}}
+                            </td>-->
+                            <td>
+                                {{item.overTime}} | {{item.repayTime}} | {{item.reachTime}}
+                            </td>
+                            <td>
+                                ￥{{item.subjectStat.moneyTotalInvest}} / ￥{{item.price}}
+                            </td>
+                            <td>
+                                <span class="pie">{{item.subjectStat.moneyTotalInvest}}/{{item.price}}</span>
+                            </td>
+                            <td>
+                                {{item.isIndexApp == 1 ? '是' : '否'}}/{{item.isIndexPc == 1 ? '是' : '否'}}
+                            </td>
+                            <td>
+                                <span v-if="item.status === 1" class="badge">{{item.statusText}}</span>
+                                <span v-if="item.status === 2" class="badge">{{item.statusText}}</span>
+                                <span v-if="item.status === 3" class="badge badge-primary">{{item.statusText}}</span>
+                                <span v-if="item.status === 4" class="badge">{{item.statusText}}</span>
+                                <span v-if="item.status === 5" class="badge">{{item.statusText}}</span>
+                                <span v-if="item.status === 6" class="badge">{{item.statusText}}</span>
+                                <span v-if="item.status === 7" class="badge">{{item.statusText}}</span>
+                                <span v-if="item.status === 8" class="badge badge-warning">{{item.statusText}}</span>
+                            </td>
+                            <td class="text-right">
+                                <div class="input-group-btn">
+                                    <button data-toggle="dropdown" class="btn btn-warning btn-xs dropdown-toggle" type="button">操作 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a style="cursor: pointer" @click="actionOnline(index)">发布</a></li>
+                                        <li><a href="form_basic.html#">发布审核</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="form_basic.html#">申请放款</a></li>
+                                        <li><a href="form_basic.html#">放款审核</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="form_basic.html#">收息</a></li>
+                                        <li><a href="form_basic.html#">收本金</a></li>
+                                        <li><a href="form_basic.html#">派息</a></li>
+                                        <li><a href="form_basic.html#">完成</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="form_basic.html#">还款</a></li>
+                                        <li><a href="form_basic.html#">流标</a></li>
+                                        <li><a href="form_basic.html#">删除</a></li>
+                                    </ul>
+                                </div>
+
+                                <!--<div class="btn-group">
+                                    <button class="btn-white btn btn-xs">编辑</button>
+                                    <button class="btn-white btn btn-xs">更新</button>
+                                    <button class="btn-white btn btn-xs">删除</button>
+                                </div>
+                                <br>
+                                <div class="btn-group">
+                                    <button class="btn-white btn btn-xs">编辑</button>
+                                    <button class="btn-white btn btn-xs">更新</button>
+                                    <button class="btn-white btn btn-xs">删除</button>
+                                </div>
+                                <br>
+                                <div class="btn-group">
+                                    <button class="btn-white btn btn-xs">编辑</button>
+                                    <button class="btn-white btn btn-xs">更新</button>
+                                    <button class="btn-white btn btn-xs">删除</button>
+                                </div>-->
+                            </td>
+                        </tr>
+                        <tfoot>
+                        <tr>
+                            <td colspan="14">
+                                <ul class="pagination pull-right"></ul>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer-begin" /}
+<script src="{$Think.config.resources}/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="{$Think.config.resources}/js/plugins/datapicker/bootstrap-datepicker.zh-CN.min.js"></script>
+
+<!-- Peity -->
+<script src="{$Think.config.resources}/js/plugins/peity/jquery.peity.min.js"></script>
+<script src="{$Think.config.resources}/js/demo/peity-demo.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#page-wrapper',
+        data: {
+            search: {
+                addTimeFrom:'',
+                addTimeTo:'',
+                repayTimeFrom:'',
+                repayTimeTo:'',
+                subjectTypeID:0,
+                status:0,
+                keyword:''
+            },
+            list:[]
+        },
+        methods:{
+            bindRepayTime:function () {
+                if(!parseInt(this.detail.term)) {
+                    swal({
+                        title: "提示",
+                        text: "标的期限必须为大于0的数字"
+                    });
+                    return;
+                }
+                this.detail.repayTime = formatDate(datatotime(this.detail.beginTime) + this.detail.term * 86400, 'Y-M-D H:I');
+            },
+            getList:function (callback) {
+                var that = this;
+                request({
+                    path:'subject/API_getList',
+                    data:that.search,
+                    success:function (data) {
+                        if(data.code != 1) {
+                            toastr.error(data.msg);
+                            return;
+                        }
+                        that.list = data.content.list;
+                        setTimeout(function () {
+                            $("span.pie").peity("pie", {
+                                fill: ['#1ab394', '#d7d7d7', '#ffffff']
+                            })
+                        },100)
+                        if(callback) {
+                            callback(data);
+                        }
+                    }
+                })
+            },
+            actionOnline:function (index) {
+                var that = this;
+                request({
+                    path:'subject/API_actionOnline',
+                    data:{
+                        alias:that.list[index].alias
+                    },
+                    show:true,
+                    success:function (data) {
+                        if(data.code != 1) {
+                            toastr.error(data.msg);
+                            return;
+                        }
+                        that.list[index].status = data.content.detail.status;
+                        that.list[index].statusText = data.content.detail.statusText;
+                    }
+                })
+            }
+        },
+        created:function () {
+
+            /*$(document).ready(function() {
+                /!*$('#data_5 .input-daterange').datetimepicker({
+                    autoclose: true,
+                    language: "zh-CN",
+                    todayBtn: "linked"
+                });*!/
+
+                $(".datatimepicker").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+            });*/
+
+            $(document).ready(function() {
+                /*$('#data_5 .input-daterange').datetimepicker({
+                 autoclose: true,
+                 language: "zh-CN",
+                 todayBtn: "linked"
+                 });*/
+
+                $("#datepickerCreate").datepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd',
+                    todayBtn: true,
+                    language: "zh-CN"
+                });
+
+                $("#datepickerRepay").datepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd',
+                    todayBtn: true,
+                    language: "zh-CN"
+                });
+            });
+
+            this.getList();
+        }
+    })
+
+</script>
+{include file="public/footer-end" /}
